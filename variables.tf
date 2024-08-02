@@ -41,3 +41,10 @@ variable "delete_retention_policy_in_days" {
   type        = number
   default     = "90"
 }
+
+variable "identity_type" {
+  description = "The identity type of the storage account"
+  type        = string
+  default     = "SystemAssigned"
+  
+}

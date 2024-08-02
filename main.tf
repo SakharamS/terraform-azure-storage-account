@@ -11,7 +11,7 @@ resource "azurerm_storage_account" "sa" {
     }
   }
   identity {
-    type = "SystemAssigned"
+    type = var.identity_type
   }
   tags = var.tags
 }
