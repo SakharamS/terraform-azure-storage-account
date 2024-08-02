@@ -6,7 +6,7 @@ This Terraform module creates an Azure Storage Account.
 
 ```hcl
 module "storage_account" {
-  source = "username/storage-account/azure"
+  source = "sakharamshinde/storage-account/azure"
   version = "1.0.0"
 
   resource_group_name      = "example-rg"

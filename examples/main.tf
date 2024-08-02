@@ -3,7 +3,8 @@ provider "azurerm" {
 }
 
 module "storage_account" {
-  source = "../.."
+  source  = "SakharamS/storage-account/azure"
+  version = "1.0.0"
 
   resource_group_name      = jsondecode(file("example.tfvars.json")).resource_group_name
   location                 = jsondecode(file("example.tfvars.json")).location

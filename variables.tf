@@ -32,6 +32,6 @@ variable "tags" {
   description = "Tags to apply to the storage account"
   type        = map(string)
   default     = {
-    environment = "default"
+    environment = "dev"
   }
 }
