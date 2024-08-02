@@ -1,0 +1,19 @@
+version: '3'
+
+tasks: 
+  git-push:
+    desc: Push changes to git | Example- task git-push TAG_NAME=v1.0.0 TAG_MESSAGE="Release v1.0.0"
+    vars:
+      TAG_NAME: "{{.TAG_NAME}}"
+      TAG_MESSAGE: "{{.TAG_MESSAGE}}"
+    cmds:
+      - |
+        if git rev-parse "{{.TAG_NAME}}" >/dev/null 2>&1; then
+          echo "Tag '{{.TAG_NAME}}' already exists. Skipping tag creation."
+        else
+          git tag -a "{{.TAG_NAME}}" -m "{{.TAG_MESSAGE}}"
+        fi
+      - git add .
+      - git commit -m "{{.TAG_MESSAGE}}"
+      - git push origin main --tags
+      
