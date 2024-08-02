@@ -8,6 +8,12 @@ tasks:
       TAG_MESSAGE: "{{.TAG_MESSAGE}}"
     cmds:
       - |
+        if [ -z "$(git rev-parse --verify HEAD 2>/dev/null)" ]; then
+          echo "No commits found. Creating initial commit."
+          git add .
+          git commit -m "Initial commit"
+        fi
+      - |
         if git rev-parse "{{.TAG_NAME}}" >/dev/null 2>&1; then
           echo "Tag '{{.TAG_NAME}}' already exists. Skipping tag creation."
         else

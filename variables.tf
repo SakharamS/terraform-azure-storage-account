@@ -31,7 +31,13 @@ variable "account_replication_type" {
 variable "tags" {
   description = "Tags to apply to the storage account"
   type        = map(string)
-  default     = {
+  default = {
     environment = "dev"
   }
+}
+
+variable "delete_retention_policy_in_days" {
+  description = "The number of days that the blob should be retained for"
+  type        = string
+  default     = "90"
 }
