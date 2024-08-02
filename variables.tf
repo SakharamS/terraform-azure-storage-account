@@ -38,6 +38,6 @@ variable "tags" {
 
 variable "delete_retention_policy_in_days" {
   description = "The number of days that the blob should be retained for"
-  type        = string
+  type        = number
   default     = "90"
 }
