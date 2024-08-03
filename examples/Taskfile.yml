@@ -1,0 +1,62 @@
+version: '3'
+
+tasks:
+  init:
+    desc: Initialize the terraform
+    cmds:
+      - echo "Terraform Init"
+      - terraform init
+      
+  plan:
+    desc: Plan the infrastructure
+    cmds:
+      - echo "Plan"
+      - terraform fmt
+      - terraform plan
+  
+  apply:
+    desc: Apply the infrastructure
+    cmds:
+      - echo "Apply"
+      - terraform apply -auto-approve
+
+  destroy:
+    desc: Destroy the infrastructure
+    cmds:
+      - echo "Destroy"
+      - terraform destroy -auto-approve
+
+  fmt:
+    desc: Format the Terraform files
+    cmds:
+      - echo "Format"
+      - terraform fmt
+
+  destroy:
+    desc: Destroy the infrastructure
+    cmds:
+      - echo "Destroy"
+      - terraform destroy -auto-approve
+  
+  one-click-deploy:
+    desc: One Click Deployment
+    cmds:
+      - task: init
+      - task: fmt
+      - task: plan
+      - task: apply --auto-approve
+
+  terraform-cleanup:
+    desc: Terraform Cleanup
+    cmds:
+      - rm -rf .terraform
+      - rm -rf terraform.tfstate
+      - rm -rf terraform.tfstate.backup
+      - rm -rf .terraform.lock.hcl
+
+  one-click-destroy:
+    desc: One Click Destroy
+    cmds:
+      - task: init
+      - task: destroy
+      - task: terraform-cleanup
